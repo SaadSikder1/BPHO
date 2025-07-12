@@ -14,7 +14,7 @@ if uploaded_file is not None:
     img_np = np.array(img)
 
     # Sidebar controls
-    st.sidebar.header("🔧 Controls")
+    st.sidebar.header("Controls")
     f = st.sidebar.slider("Focal length (f)", 0.1, 2.0, 1.0, 0.01)
     x = st.sidebar.slider("Object x-position", 0.1, 3.0, 0.8, 0.01)
     y = st.sidebar.slider("Object y-position", -1.5, 1.5, 0.0, 0.01)
@@ -83,3 +83,5 @@ if uploaded_file is not None:
     st.pyplot(fig)
 else:
     st.info("Please upload an object image.")
+#streamlit run /workspaces/BPHO/TASK6AND7.py
+# THIS IS THE COMMAND YOU USE
