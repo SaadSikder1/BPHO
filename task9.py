@@ -1,66 +1,61 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image, ImageOps
+from scipy.ndimage import affine_transform
 
-# App title
-st.title("Virtual Image in a Convex Spherical Mirror")
+# Page config
+st.set_page_config(page_title="Convex Mirror Simulator", layout="centered")
+st.title("🔍 Convex Mirror Image Simulation")
+st.markdown("""
+This interactive model shows the virtual image formed by a **convex spherical mirror**.  
+Upload an object image and adjust parameters to explore how the image changes.
+""")
 
-# Mirror characteristics
-focal_length = -10  # convex mirror: focal length is negative
-radius_of_curvature = 2 * focal_length
+# Upload image
+uploaded_file = st.file_uploader("📤 Upload an image to reflect", type=["png", "jpg", "jpeg"])
 
-# User-controlled object distance
-object_distance = st.slider(
-    "Object Distance from Mirror (cm)", min_value=1, max_value=100, value=30.0, step=1.0
-)
+if uploaded_file:
+    # Load and convert image
+    img = Image.open(uploaded_file).convert("L")
+    img_np = np.array(img)
 
-# Calculate image distance using mirror equation
-image_distance = 1 / (1 / focal_length - 1 / object_distance)
+    # Sidebar controls
+    st.sidebar.header("Mirror Parameters")
+    focal_length = st.sidebar.slider("Focal Length (+, units)", 1.0, 20.0, 5.0, 0.5)
+    object_distance = st.sidebar.slider("Object Distance (units)", 1.0, 50.0, 20.0, 0.5)
 
-# Define object height
-object_height = 5
+    # Mirror equation for convex: 1/f = 1/do + 1/di  →  di = 1 / (1/f - 1/do)
+    f = focal_length
+    do = object_distance
+    try:
+        di = 1 / (1/f + 1/do)
+    except ZeroDivisionError:
+        di = np.inf
 
-# Calculate image height using magnification formula
-image_height = -image_distance / object_distance * object_height
+    magnification = abs(di / do)
+    image_size = max(10, int(magnification * img_np.shape[0]))
 
-# Set up plot
-fig, ax = plt.subplots(figsize=(10, 5))
-ax.set_xlim(-60, 60)
-ax.set_ylim(-30, 30)
-ax.set_aspect('equal')
-ax.axis('off')
+    # Resize and mirror
+    img_virtual = Image.fromarray(img_np)
+    img_virtual = img_virtual.resize((image_size, image_size))
+    img_virtual = ImageOps.mirror(img_virtual)
 
-# Draw the convex mirror curve
-x_mirror = np.linspace(-30, 30, 300)
-y_mirror = -0.01 * x_mirror**2
-ax.plot(x_mirror, y_mirror, color='black', linewidth=2)
+    # Prepare plot
+    fig, ax = plt.subplots(1, 2, figsize=(10, 4))
+    ax[0].imshow(img_np, cmap='gray')
+    ax[0].set_title("Original Object")
+    ax[1].imshow(np.array(img_virtual), cmap='gray')
+    ax[1].set_title("Virtual Image (Convex Mirror)")
 
-# Principal axis
-ax.plot([0, 0], [-25, 25], 'k--', linewidth=1)
+    for a in ax:
+        a.axis('off')
+    st.pyplot(fig)
 
-# Focal point
-ax.plot([-focal_length, -focal_length], [-1, 1], 'r')
-ax.text(-focal_length, 2, 'F', color='r')
-
-# Center of curvature
-ax.plot([-radius_of_curvature, -radius_of_curvature], [-1, 1], 'b')
-ax.text(-radius_of_curvature, 2, 'C', color='b')
-
-# Draw object
-ax.plot([object_distance, object_distance], [0, object_height], color='blue', linewidth=3)
-ax.text(object_distance, object_height + 2, 'Object', ha='center')
-
-# Draw image
-ax.plot([image_distance, image_distance], [0, image_height], color='orange', linewidth=3)
-ax.text(image_distance, image_height - 3, 'Image', ha='center')
-
-# Ray 1: parallel to axis → appears to diverge from focal point
-ax.plot([object_distance, 0], [object_height, object_height], 'gray')
-ax.plot([0, image_distance], [object_height, image_height], 'gray', linestyle='dashed')
-
-# Ray 2: toward mirror center → reflects back
-ax.plot([object_distance, 0], [object_height, 0], 'gray')
-ax.plot([0, image_distance], [0, image_height], 'gray', linestyle='dashed')
-
-# Show plot
-st.pyplot(fig)
+    st.markdown(f"""
+    **Mirror Equation:** 1/f = 1/do + 1/di  
+    **Image Distance:** {di:.2f} units (virtual)  
+    **Magnification:** {magnification:.2f}  
+    """)
+else:
+    st.info("Upload an image above to begin the simulation.")
