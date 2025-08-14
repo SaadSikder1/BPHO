@@ -13,7 +13,7 @@ Upload an object image and adjust parameters to explore how the image changes.
 """)
 
 # Upload image
-uploaded_file = st.file_uploader("📤 Upload an image to reflect", type=["png", "jpg", "jpeg"])
+uploaded_file = st.file_uploader("Upload an image to reflect", type=["png", "jpg", "jpeg"])
 
 if uploaded_file:
     # Load and convert image

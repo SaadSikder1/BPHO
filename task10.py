@@ -7,7 +7,6 @@ import math
 st.set_page_config(page_title="Cylindrical Anamorphic Projection", layout="centered")
 st.title("Cylindrical Anamorphic Image Generator")
 
-# Core conversion function (θ and R to image coordinates)
 def convt(R, b, cols, c, Rmin, Rmax):
     norm_r = (R - Rmin) / (Rmax - Rmin)
     x = int(b * cols / (2 * math.pi)) % cols
@@ -21,7 +20,7 @@ def generate_anamorphic_image(img_np, output_size):
     rmin = 0.3 * c  # inner radius (where cylinder sits)
     rmax = c        # outer edge
 
-    # White background instead of black
+    # background black
     warp = np.full((rows, cols, 3), 255, dtype=np.uint8)
 
     for i in range(0, rows):

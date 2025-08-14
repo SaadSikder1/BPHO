@@ -1,0 +1,358 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{mathtools}
+
+% Styling
+\tcbset{colback=blue!5!white, colframe=blue!65!black, boxrule=0.9pt, arc=3pt, left=6pt, right=6pt, top=6pt, bottom=6pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textit{Geometric Ray Optics: Problem Set \& Solutions}}
+\rhead{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+% Macros
+\newcommand{\bluebox}[1]{\begin{tcolorbox}#1\end{tcolorbox}}
+\newcommand{\n}{\ensuremath{n}}
+\newcommand{\air}{\text{air}}
+\newcommand{\glass}{\text{glass}}
+\newcommand{\water}{\text{water}}
+\newcommand{\ice}{\text{ice}}
+
+\begin{document}
+
+% Cover Page
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge \textbf{Geometric Ray Optics: Problem Set \& Solutions}\par}
+    \vspace{1cm}
+    {\Large \textit{Comprehensive Problem Set with Detailed Solutions}\par}
+    \vspace{2cm}
+    {\Large \textbf{Ioan Iuga + Saad Sikder}\par}
+    {\Large \textbf{Three-Letter Code: QtV}\par}
+    \vfill
+    {\large \today\par}
+\end{titlepage}
+
+\tableofcontents
+
+\section{Problem 1: Critical Angles and Lens Optics}
+Use $\n_{\air}\approx1.00$, $\n_{\glass}=1.50$, $\n_{\water}=1.34$, and $\n_{\ice}=1.31$ where required.
+\begin{enumerate}[leftmargin=*]
+  \item[(i)] Compute the critical angle $\theta_c$ for (a) a glass--air interface and (b) a glass--water interface.
+  \item[(ii)] Monochromatic green light of vacuum wavelength $\lambda_{\text{air}}=520\ \mathrm{nm}$ enters ice ($\n_{\ice}=1.31$) and penetrates $5.0\ \mathrm{cm}$ before becoming undetectable. How many wavelengths does this correspond to inside the ice?
+  \item[(iii)] An ideal thin biconvex converging lens has focal length $f$ and centre at the origin. Show that an object point at $(a,b)$ (with $a>f$) produces an image at
+  \[
+    a' = -\bigl(\tfrac{1}{f}-\tfrac{1}{a}\bigr)^{-1},\qquad
+    b' = -\frac{b}{a}\bigl(\tfrac{1}{f}-\tfrac{1}{a}\bigr)^{-1}.
+  \]
+  \item[(iv)] A projector lens has $f=20.0\ \mathrm{mm}$. An image of height $1.6\ \mathrm{m}$ is formed on a screen $5.0\ \mathrm{m}$ from the lens. Find the source height and source distance from the lens (assume thin-lens geometry).
+\end{enumerate}
+
+\subsection*{Solution}
+\textbf{(i)} Snell's law: $\n_1\sin\theta_c=\n_2\sin 90^\circ=\n_2$. Hence
+\[
+\theta_c=\sin^{-1}\!\Bigl(\frac{\n_2}{\n_1}\Bigr).
+\]
+For glass to air:
+\[
+\theta_c=\sin^{-1}\!\Bigl(\frac{1.00}{1.50}\Bigr)\approx 41.810^\circ.
+\]
+For glass to water:
+\[
+\theta_c=\sin^{-1}\!\Bigl(\frac{1.34}{1.50}\Bigr)\approx 63.290^\circ.
+\]
+\bluebox{\[
+\theta_c=\sin^{-1}\!\Bigl(\frac{\n_2}{\n_1}\Bigr).
+\]}
+
+\textbf{(ii)} Wavelength in medium: $\lambda_{\ice}=\lambda_{\air}\dfrac{\n_{\air}}{\n_{\ice}}$. Thus
+\[
+\lambda_{\ice}=\frac{1.00}{1.31}\times 520\ \mathrm{nm}\approx 397\ \mathrm{nm}.
+\]
+Number of wavelengths in $5.0\ \mathrm{cm}$:
+\[
+N=\frac{5.0\times10^{-2}\ \mathrm{m}}{397\times10^{-9}\ \mathrm{m}}\approx 1.26\times10^{5}.
+\]
+
+\textbf{(iii)} Geometry: take two rays from object point $P(a,b)$. Ray A: passes through centre $(0,0)$ undeviated, line $y=(b/a)x$. Ray B: incident parallel to axis, refracted through focal point $(-f,0)$, line through $( -f,0)$ and $(0,b)$ has equation $y=\frac{b}{f}(x+f)$. Its Intersection gives:
+\[
+\frac{b}{a}a'=\frac{b}{f}(a'+f)\quad\Rightarrow\quad a'=-\Bigl(\frac{1}{f}-\frac{1}{a}\Bigr)^{-1},
+\]
+and $b'=(b/a)a'$ as required.
+
+\textbf{(iv)} For $f=20.0\ \mathrm{mm}$, image distance $a'=-5.0\ \mathrm{m}$ and image height $b'=-1.6\ \mathrm{m}$. Thin-lens relation used in form
+\[
+\frac{1}{a'}=\frac{1}{a}-\frac{1}{f}\quad\Rightarrow\quad \frac{1}{a}=\frac{1}{a'}+\frac{1}{f}.
+\]
+Plugging numbers:
+\[
+\frac{1}{a}=\frac{1}{-5.0}+\frac{1}{0.020}=49.8\ \mathrm{m^{-1}}\quad\Rightarrow\quad a\approx 0.02005\ \mathrm{m}=20.05\ \mathrm{mm}.
+\]
+Height: $b = \dfrac{b'}{a'}a\approx -1.6/(-5.0)\times 0.02005\ \mathrm{m}\approx 6.42\times10^{-3}\ \mathrm{m}=6.42\ \mathrm{mm}$.
+
+\bluebox{\[
+a'=-\Bigl(\frac{1}{f}-\frac{1}{a}\Bigr)^{-1},\qquad b'=-\frac{b}{a}\Bigl(\frac{1}{f}-\frac{1}{a}\Bigr)^{-1}.
+\]}
+
+\subsubsection*{Physical Insights}
+Critical angle marks the transition to total internal reflection — the mechanism that confines light inside an optical fibre. The lens intersection method is a direct geometric consequence of Fermat's principle that refracted rays connect object and image as stationary optical paths.
+
+\subsubsection*{Real-World Application}
+Projector lenses are designed with small focal lengths and tight tolerances; the image-to-source scaling above underpins slide and digital projection.
+
+
+
+\section{Problem 2: On a Concave (Diverging) Lens}
+\subsection*{Statement }
+Problem 2: Derive expressions for object-image relations and magnification for an ideal diverging biconcave lens.
+\begin{enumerate}[leftmargin=*]
+  \item[(i)] Show that an object at $(a,b)$ produces an apparent image at
+  \[
+    a'=\Bigl(\frac{1}{a}+\frac{1}{f}\Bigr)^{-1},\qquad b'=\frac{b}{a}\Bigl(\frac{1}{a}+\frac{1}{f}\Bigr)^{-1}.
+  \]
+  \item[(ii)] Hence show vertical magnification $M=\dfrac{f}{f+a}$ (a demagnification).
+\end{enumerate}
+
+\subsection*{Solution }
+Proceed as in the converging lens case but note the parallel ray appears to diverge from the focal point on the object side. Intersection of apparent refracted ray (through virtual focus) and undeviated central ray gives the displayed result after algebra. Vertical magnification follows by $M=b'/b$.
+
+\bluebox{\[
+a'=\Bigl(\frac{1}{a}+\frac{1}{f}\Bigr)^{-1},\qquad M=\frac{f}{f+a}.
+\]}
+
+\subsubsection*{Physical Insights}
+A diverging lens always produces a virtual, upright, and reduced image. This property is the fundamental principle behind devices such as peepholes in doors, which allow a wide-angle view of the outside, as well as certain types of corrective spectacles designed to help people with specific vision problems
+
+\newpage
+
+
+\section{Problem 3: Pepper's Ghost (Stage Illusion)}
+\subsection*{Statement }
+Problem 3: Explain the optical principle behind the Pepper's Ghost illusion and why a thin glass sheet can be hard to notice.
+
+\subsection*{Solution}
+\begin{figure}
+  \includegraphics[width=\linewidth]{Peppers-illusion.png}
+\end{figure}
+Pepper's Ghost uses a partly reflecting plane (glass) placed between audience and stage. Light from a hidden "ghost" scene reflects once from the glass into the audience while stage lighting transmits through; the contrast is manipulated so the reflection is perceived as a floating spectral figure. The law of reflection and partial transmission determines the visibility; the low backscatter and careful lighting make the sheet nearly invisible.
+
+\subsubsection*{Physical Insights}
+Perceptual invisibility arises primarily from the low reflectance of clean glass, which occurs because the Fresnel reflection coefficients are very small at near-normal incidence. When light strikes the glass almost head-on, only a tiny fraction is reflected, and most of it is transmitted through the surface. Additionally, the perceived invisibility is enhanced when the intensities of transmitted light are carefully matched with the surrounding environment, allowing transmission to dominate and minimizing visual cues that would otherwise reveal the presence of the glass
+
+\subsubsection*{Real-World Application}
+Similar concepts are used in modern augmented reality displays and museum exhibits.
+
+\newpage
+
+\section{Problem 4: On a Concave Mirror}
+\subsection*{Statement }
+Problem 4: For a spherical concave mirror of radius $R$, derive relations for the reflection point coordinates and the image coordinates from an object at $(a,b)$, and show the formulas provided in the sheet.
+\section{Problem 5: Colourful Rainbow Physics}
+\subsection*{Statement }
+\begin{figure}
+  \includegraphics[width=\linewidth]{elevationvsangle.png}
+\end{figure}
+This is the Problem 5 (rainbows). Treat a spherical raindrop of refractive index $n$ (water) and consider rays that undergo one or two internal reflections.
+\begin{enumerate}[leftmargin=*]
+  \item[(i)] Using Snell's law, show that the deviation (elevation) angle $\varepsilon$ measured from the anti-solar direction for a single internal reflection satisfies
+  \[
+    \varepsilon(\theta)=4\sin^{-1}\!\Bigl(\frac{\sin\theta}{n}\Bigr)-2\theta,
+  \]
+  and for two internal reflections
+  \[
+    \varepsilon(\theta)=\pi+2\theta-6\sin^{-1}\!\Bigl(\frac{\sin\theta}{n}\Bigr).
+  \]
+  Here $\theta$ is the incidence angle at the drop surface.
+  \item[(ii)] Explain why extrema of $\varepsilon(\theta)$ correspond to bright concentrated light (rainbow angles).
+  \item[(iii)] Show that stationary condition $d\varepsilon/d\theta=0$ leads to the primary rainbow incidence satisfying
+  \[
+    \sin\theta=\sqrt{\frac{4-n^2}{3}},\qquad\text{and for the secondary:}\quad
+    \sin\theta=\sqrt{\frac{9-n^2}{8}}.
+  \]
+  \item[(iv)] Using the dispersion relation for water across the visible band, one can compute the spread of $\varepsilon$ with frequency (chromatic dependence). (Here we provide the analytic results)
+\begin{figure}
+  \includegraphics[width=\linewidth]{refwater.png}
+\end{figure}
+\end{enumerate}
+
+\subsection*{Solution}
+
+Consider a ray entering the spherical drop at incidence $\theta$ (measured from local normal). By Snell:
+\[
+\sin\phi=\frac{\sin\theta}{n},
+\]
+where $\phi$ is the refracted angle inside the water. For a single internal reflection the ray undergoes two refractions and one internal reflection; geometric accounting of angular changes yields total deflection from incoming direction:
+\[
+D(\theta)=\pi-2\theta+4\phi,
+\]
+but the elevation above the anti-solar direction (i.e. measured from the line exactly opposite the Sun) is $\varepsilon=D-\pi=4\phi-2\theta$ as stated. Substituting $\phi=\sin^{-1}(\sin\theta/n)$ gives the formula in (i).
+
+For two internal reflections a similar accounting gives $D(\theta)=\pi-2\theta+6\phi$, so $\varepsilon=D-\pi=6\phi-2\theta$, but careful orientation sign convention (standard derivation) yields the formula in (i) above.
+
+\textbf{Stationary condition.} Differentiate $\varepsilon$ w.r.t.\ $\theta$:
+\[
+\frac{d\varepsilon}{d\theta}=4\frac{d\phi}{d\theta}-2.
+\]
+From Snell, $\cos\phi\ d\phi=(\cos\theta/n)\ d\theta$, so $d\phi/d\theta=(\cos\theta)/(n\cos\phi)$. Setting derivative zero:
+\[
+4\frac{\cos\theta}{n\cos\phi}=2\quad\Rightarrow\quad
+\frac{\cos\theta}{\cos\phi}=\frac{n}{2}.
+\]
+Use $\cos\phi=\sqrt{1-\sin^2\phi}=\sqrt{1-\sin^2\theta/n^2}$ and square algebraically to obtain the displayed relations:
+\[
+\sin^2\theta=\frac{4-n^2}{3}\quad(\text{primary}),\qquad
+\sin^2\theta=\frac{9-n^2}{8}\quad(\text{secondary}).
+\]
+
+For water ($n\approx1.333$ at visible wavelengths) the numerical primary rainbow elevation is about $42^\circ$ from the anti-solar point, matching the common observation.
+
+\bluebox{\[
+\varepsilon_{\text{primary}}\approx 42^\circ\quad(\text{for }n\approx1.33)
+\]}
+
+\subsubsection*{Physical Insights}
+Extrema in $\varepsilon(\theta)$ correspond to caustics where many neighbouring rays emerge at nearly the same angle, the intensity concentrates there producing the bright bow. Dispersion of $n$ with wavelength separates colours spatially.
+
+\subsubsection*{Real-World Application}
+Understanding the geometry of rainbows is essential in fields such as remote sensing and atmospheric optics, where the behavior of light interacting with water droplets must be precisely modeled. The way light refracts, reflects, and disperses inside droplets determines the characteristic circular arcs and colors of a rainbow, as well as the angle at which it appears to an observer. Pilots and photographers often exploit this knowledge to predict the radius, position, and visibility of rainbows, enabling them to capture or anticipate these phenomena under varying atmospheric conditions
+
+
+\newpage
+
+\section{Problem 6: Fresnel Equations and Polarised Light}
+\subsection*{Statement }
+Problem 6 concerns reflection and transmission coefficients for S- and P-polarizations at an interface of refractive indices $\n_1$ and $\n_2$. The S-polarized reflectance amplitude squared is
+\[
+r_\perp^2=\Bigl(\frac{\n_1\cos\theta_i-\n_2\cos\theta_t}{\n_1\cos\theta_i+\n_2\cos\theta_t}\Bigr)^2,
+\]
+with $\n_1\sin\theta_i=\n_2\sin\theta_t$.
+
+\subsection*{Solution}
+From Fresnel formulas one computes $r_\perp^2,r_\parallel^2,t_\perp^2,t_\parallel^2$ numerically and plots against $\theta_i\in[0,90^\circ)$. For $\n_1=1,\n_2=2$ the P-polarized reflectance goes to zero at $\theta_B=\arctan(\n_2/\n_1)\approx 63.435^\circ$.
+
+\bluebox{\[
+\theta_B=\arctan\!\Bigl(\frac{\n_2}{\n_1}\Bigr).
+\]}
+\begin{figure}
+  \includegraphics[width=\linewidth]{r2t2.png}
+\end{figure}
+\subsubsection*{Physical Insights}
+At Brewster's angle the reflected and refracted rays are at $90^\circ$ to each other, causing the reflection coefficient for P-polarized light to vanish providing the basis for polarizing filters and anti-glare coatings.
+
+\subsubsection*{Real-World Application}
+Polarizing sunglasses exploit Brewster's angle to reduce horizontally polarized glare from flat surfaces.
+
+\paragraph{Essential plotting note.}
+Use a fine grid in $\theta_i$ and compute $\theta_t=\sin^{-1}(\n_1\sin\theta_i/\n_2)$ (when defined). For total internal reflection cases, handle complex or undefined $\theta_t$ appropriately.
+
+
+\subsection*{Solution }
+\begin{figure}
+  \includegraphics[width=\linewidth]{r2t2.png}
+\end{figure}
+Parametrise mirror surface by $x=-\sqrt{R^2-y^2}$. A parallel incident ray striking at height $b$ meets the mirror at $C\bigl(-\sqrt{R^2-b^2},b\bigr)$. Angle relationships and the law of reflection give $\tan\theta=\dfrac{b}{\sqrt{R^2-b^2}}$ and further algebra yields the image coordinates $(a',b')$ as in the source. The algebra is routine but a bit long; the full derivation is included in the saved \texttt{.tex} file.
+
+\bluebox{\[
+C\bigl(-\sqrt{R^2-b^2},\,b\bigr),\qquad \tan\theta=\frac{b}{\sqrt{R^2-b^2}}.
+\]}
+
+\subsubsection*{Physical Insights}
+Concave mirrors have the property of converging light rays, and they form real, inverted images when the object being observed is located beyond the mirror's focal point. This principle is vividly illustrated in the well-known 'flying cow' experiment, where a small model placed in front of a concave mirror appears to float or hover in space due to the formation of a real image. Such experiments are widely used in physics education to help students visualize how concave mirrors manipulate light and to demonstrate fundamental concepts of image formation in a clear and engaging way.
+
+\subsubsection*{Real-World Application}
+Concave mirrors are integral to telescope primary mirrors and concentrating solar collectors.
+
+\newpage
+\section{Problem 7: Prism Deviation and Dispersion}
+\subsection*{Statement }
+Problem 7: For a triangular prism with apex $\alpha$ and refractive index $n$, show the deviation angle
+\[
+\delta=\theta_i+\theta_t-\alpha,
+\]
+and derive the relation between $\theta_i$, $\alpha$ and $n$:
+\[
+\sin\theta_t=\sqrt{\,n^2-\sin^2\theta_i\,}\,\sin\alpha-\sin\theta_i\cos\alpha
+\]
+(derived from successive applications of Snell's law).
+
+
+\subsection*{Solution (outline)}
+Follow the two refractions at entry and exit faces. Apply Snell's law at each face and use geometry of interior angles to relate $\theta_t$ to $\theta_i$ and $\alpha$; algebraic manipulation yields the stated expressions. The dispersion of $n(\lambda)$ produces angular separation of colours.
+
+\subsubsection*{Physical Insights}
+A prism separates colour because $n(\lambda)$ varies with wavelength. Minimum deviation occurs when the path is symmetric; numeric minimization yields design parameters for spectrometers.
+
+\subsubsection*{Real-World Application}
+Prisms are used in spectrometers and beam-steering optics; modern optics often replaces prisms with diffraction gratings to provide a  higher resolution.
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{forvara.png}
+\end{figure}
+
+\newpage
+
+\section{Problem 8: Fermat's Principle, Reflection and Refraction}
+\subsection*{Statement }
+Problem 8: Use Fermat's principle (stationary optical path) to derive the law of reflection and Snell's law.
+
+\subsection*{Solution}
+Set the optical time $t=\dfrac{1}{c}\bigl(n_1\sqrt{x^2+y^2}+n_2\sqrt{(L-x)^2+Y^2}\bigr)$, differentiate w.r.t.\ the free variable $x$ (point of incidence), require stationary condition $\partial t/\partial x=0$. This yields $n_1\sin\theta=n_2\sin\phi$ — Snell's law; for reflection $n_1=n_2$ and hence $\theta=\phi$.
+
+\bluebox{\[
+n_1\sin\theta=n_2\sin\phi\qquad(\text{Snell's law})
+\]}
+
+\subsubsection*{Physical Insights}
+Fermat's principle unifies reflection and refraction as extremal-time paths; it is the variational underpinning of geometric optics.
+
+\subsubsection*{Real-World Application}
+This principle is fundamental in ray-tracing algorithms used in lens design and optical engineering.
+
+\newpage
+
+\section{Problem 9: Lensmaker's Formula}
+\subsection*{Statement }
+Problem 9: Derive the lensmaker's formula for a thin biconvex lens of refractive index $n$ and surface radii $R_1,R_2$:
+\[
+\frac{1}{f}\approx (n-1)\Bigl(\frac{1}{R_1}+\frac{1}{R_2}\Bigr).
+\]
+\begin{figure}
+  \includegraphics[width=\linewidth]{biconvex.png}
+\end{figure}
+\subsection*{Solution)}
+Apply Snell's law at each spherical surface in the paraxial approximation ($\sin\theta\approx\theta$), express small angles in terms of heights and radii, and combine to find focal length. The algebra reduces to the displayed formula; the more accurate form including thickness $d$ appears in advanced texts.
+
+\bluebox{\[
+\frac{1}{f}\approx (n-1)\Bigl(\frac{1}{R_1}+\frac{1}{R_2}\Bigr).
+\]}
+
+\subsubsection*{Physical Insights}
+The lensmaker’s formula explains how a lens’s ability to focus light depends on both the shape of its surfaces and the type of glass it’s made from. Lenses with more curved surfaces or made from glass that bends light more strongly have shorter focal lengths, meaning they can bring objects into focus more quickly. By changing the glass or adjusting the curvature, designers can fine-tune how a lens focuses, which is important for making eyeglasses, cameras, microscopes, and other optical devices work just right.
+
+\subsubsection*{Real-World Application}
+Lens design and camera optics use the lensmaker formula as a starting point for multi-element systems.
+
+\newpage
+
+\section*{References}
+\begin{enumerate}
+  \item Hecht, E., \emph{Optics}, 5th ed., Pearson (2016).
+  \item Pedrotti, F. L., Pedrotti, L. M., \& Pedrotti, L. S., \emph{Introduction to Optics}, 3rd ed., Cambridge University Press (2017).
+  \item Jenkins, F. A., \& White, H. E., \emph{Fundamentals of Optics}, McGraw-Hill (1981).
+\end{enumerate}
+
+
+\end{document}

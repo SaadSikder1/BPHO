@@ -52,7 +52,7 @@ for ti in theta_i_vals:
 theta_t_vals = np.array(theta_t_vals)
 delta_vals = np.array(delta_vals)
 
-# Multi-alpha plot (bottom-right)
+# (bottom-right)
 alphas = np.arange(10, 85, 5)
 delta_map = []
 for A in alphas:
@@ -116,7 +116,7 @@ ax5.set_ylabel(r"Deflection angle $\delta$ / deg")
 ax5.set_title(r"$\delta$ for various $\alpha$")
 ax5.legend(fontsize=8)
 
-# Hide bottom-right empty cell
+# Hide bottom-right
 ax_empty = plt.subplot(gs[1,2])
 ax_empty.axis('off')
 

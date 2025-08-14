@@ -41,7 +41,6 @@ def plot_rainbows(solar_elev_deg):
     st.pyplot(plt)
     plt.close()
 
-# Streamlit slider input
 solar_elevation = st.slider("Solar Elevation Angle (degrees)", min_value=0.0, max_value=60.0, value=0.0, step=0.5)
 
 plot_rainbows(solar_elevation)

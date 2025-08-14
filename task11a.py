@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Constants
 n = 1.33  # Refractive index of water
 
 # Incident angles (degrees)
@@ -41,4 +40,4 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.show()
-plt.savefig('11a.png')
+plt.savefig('11aimage.png')

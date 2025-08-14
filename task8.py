@@ -51,4 +51,4 @@ if uploaded_file:
         a.axis('off')
     st.pyplot(fig)
 else:
-    st.info("📤 Upload an image to begin the simulation.")
+    st.info("Upload an image to begin the simulation.")
